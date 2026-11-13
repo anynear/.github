@@ -1,0 +1,70 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Gemeinsame Renovate-Vorlage für alle anynear-Repos (ADR 0102). Repos nutzen sie mit extends: github>anynear/.github:renovate-config",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    "helpers:pinGitHubActionDigests",
+    ":semanticCommitsDisabled"
+  ],
+  "timezone": "Europe/Berlin",
+  "schedule": ["before 6am on monday"],
+  "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
+  "automerge": false,
+  "platformCommit": "enabled",
+  "labels": ["abhaengigkeiten"],
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 5,
+  "rebaseWhen": "conflicted",
+  "dependencyDashboardTitle": "Abhängigkeiten (Renovate)",
+  "dependencyDashboardOSVVulnerabilitySummary": "none",
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["sicherheit"],
+    "schedule": ["at any time"],
+    "minimumReleaseAge": null,
+    "prCreation": "immediate"
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on the first day of the month"]
+  },
+  "packageRules": [
+    {
+      "description": "Je Ökosystem ein gebündelter PR pro Woche",
+      "matchManagers": ["gradle", "gradle-wrapper"],
+      "groupName": "Gradle"
+    },
+    {
+      "matchManagers": ["gomod"],
+      "groupName": "Go"
+    },
+    {
+      "matchManagers": ["npm"],
+      "groupName": "npm"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "GitHub Actions"
+    },
+    {
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "groupName": "Docker"
+    },
+    {
+      "description": "meshtastic-sdk ist bewusst gepinnt (ADR 0001); Kotlin und Kable sind an sein ABI gebunden. Nur nach Freigabe im Dashboard.",
+      "matchPackageNames": ["org.meshtastic:**", "org.jetbrains.kotlin**", "com.juul.kable:**"],
+      "groupName": "meshtastic-sdk, Kotlin, Kable",
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Go: indirekte Module aktuell halten, go.mod-Version nicht von selbst anheben",
+      "matchManagers": ["gomod"],
+      "matchDepTypes": ["golang"],
+      "enabled": false
+    }
+  ],
+  "postUpdateOptions": ["gomodTidy", "gomodUpdateImportPaths"]
+}
