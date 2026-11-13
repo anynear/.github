@@ -55,5 +55,5 @@ described openly on the [technology page](https://anynear.app/en/technology/).
 ## Contact
 
 - Questions and feedback: [support@anynear.app](mailto:support@anynear.app)
-- Security issues: please report them as described at [anynear.app/en/technology/#melden](https://anynear.app/en/technology/#melden)
+- Security issues: [security@anynear.app](mailto:security@anynear.app), see [SECURITY.md](https://github.com/anynear/.github/blob/main/SECURITY.md)
 - For organisations: [anynear.app/en/business](https://anynear.app/en/business/)
