@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Gemeinsame Renovate-Vorlage für alle anynear-Repos (ADR 0102). Repos nutzen sie mit extends: github>anynear/.github:renovate-config",
+  "description": "Shared Renovate preset for anynear repositories. Use it with extends: local>anynear/.github:renovate-config",
   "extends": [
     "config:recommended",
     ":dependencyDashboard",
@@ -13,16 +13,16 @@
   "internalChecksFilter": "strict",
   "automerge": false,
   "platformCommit": "enabled",
-  "labels": ["abhaengigkeiten"],
+  "labels": ["dependencies"],
   "prHourlyLimit": 2,
   "prConcurrentLimit": 5,
   "rebaseWhen": "conflicted",
-  "dependencyDashboardTitle": "Abhängigkeiten (Renovate)",
+  "dependencyDashboardTitle": "Dependencies (Renovate)",
   "dependencyDashboardOSVVulnerabilitySummary": "none",
   "osvVulnerabilityAlerts": true,
   "vulnerabilityAlerts": {
     "enabled": true,
-    "labels": ["sicherheit"],
+    "labels": ["security"],
     "schedule": ["at any time"],
     "minimumReleaseAge": null,
     "prCreation": "immediate"
@@ -33,7 +33,7 @@
   },
   "packageRules": [
     {
-      "description": "Je Ökosystem ein gebündelter PR pro Woche",
+      "description": "One grouped pull request per ecosystem and week",
       "matchManagers": ["gradle", "gradle-wrapper"],
       "groupName": "Gradle"
     },
@@ -54,13 +54,13 @@
       "groupName": "Docker"
     },
     {
-      "description": "meshtastic-sdk ist bewusst gepinnt (ADR 0001); Kotlin und Kable sind an sein ABI gebunden. Nur nach Freigabe im Dashboard.",
+      "description": "meshtastic-sdk is pinned on purpose; Kotlin and Kable are bound to its ABI. Only after approval in the dashboard.",
       "matchPackageNames": ["org.meshtastic:**", "org.jetbrains.kotlin**", "com.juul.kable:**"],
       "groupName": "meshtastic-sdk, Kotlin, Kable",
       "dependencyDashboardApproval": true
     },
     {
-      "description": "Go: indirekte Module aktuell halten, go.mod-Version nicht von selbst anheben",
+      "description": "Go: keep indirect modules current, never raise the go directive of go.mod on its own",
       "matchManagers": ["gomod"],
       "matchDepTypes": ["golang"],
       "enabled": false
