@@ -31,22 +31,24 @@
   still get through when the internet or the power is down.
 - **Alerts.** Channels for alarms from devices at home, shared with your family, plus official warnings in Germany.
 
-## Open protocols
+## Open source
 
 anynear uses only standard, publicly reviewed algorithms – no custom cryptography.
 
-| | |
+| Repository | |
 |---|---|
-| **ANMP v1** | anynear Message Protocol: end-to-end encrypted messages over the internet and LoRa mesh radio |
-| **ANDP v1** | anynear Distributed Protocol: content-blind storage on a network of relays |
+| [**App**](https://github.com/anynear/App) | The app for Android and iPhone |
+| [**Web**](https://github.com/anynear/Web) | anynear in the browser |
+| [**ANMP**](https://github.com/anynear/ANMP) | anynear Message Protocol v1: end-to-end encrypted messages over the internet and LoRa mesh radio, and the shared core of app and web app |
+| [**ANDP**](https://github.com/anynear/ANDP) | anynear Distributed Protocol v1: content-blind storage on a network of relays |
 
-The app, the web app and both protocols are licensed under the GPL-3.0-or-later. Their source code is being prepared for
-publication and will appear in this organisation.
+Everything is licensed under the GPL-3.0-or-later; ANMP, ANDP and the web app are also available under a commercial
+license on request. Contributions are welcome – see CONTRIBUTING.md in each repository.
 
 ## Status
 
-anynear is in development (beta) and has **not been independently audited**. The procedures and their known limits are
-described openly on the [technology page](https://anynear.app/en/technology/).
+anynear is in active development. The procedures and their known limits are described openly on the
+[technology page](https://anynear.app/en/technology/).
 
 - **Android:** coming to Google Play
 - **iPhone:** TestFlight invitation on request
